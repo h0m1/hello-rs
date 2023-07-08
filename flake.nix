@@ -7,7 +7,7 @@
 
   outputs = { self, nixpkgs, flake-utils }:
 
-    let
+    {
       overlay = final: prev: with final; {
         hello-rs = rustPlatform.buildRustPackage {
           pname = "hello-rs";
@@ -17,9 +17,7 @@
             lockFile = ./hello-rs/Cargo.lock;
           };
         };
-      }; in
-    {
-      inherit overlay;
+      };
     } // flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
