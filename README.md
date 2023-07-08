@@ -1,0 +1,1 @@
+a simple nix flake that builds a rust application
